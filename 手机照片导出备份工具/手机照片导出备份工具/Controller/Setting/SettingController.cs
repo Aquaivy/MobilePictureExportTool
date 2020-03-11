@@ -42,6 +42,7 @@ namespace 手机照片导出备份工具.Controller
             Settings settings = new Settings
             {
                 AndroidSdkRootPath = @"D:\Softwares\Android\android-sdk\",
+                CloudPath= @"E:\cloud_path\",
                 LocalBackupPath = @"E:\backup_path\",
                 RecycleBinPath = @"E:\backup_path\_recycle_bin",
                 DeviceConfigPath = @"\Configs\Mobile.config",
@@ -67,6 +68,23 @@ namespace 手机照片导出备份工具.Controller
             // save
             var json = JsonConvert.SerializeObject(settings);
             File.WriteAllText(setting_full_path, json, Encoding.UTF8);
+        }
+
+        public PathMap GetPathMapWithName(string name)
+        {
+            if (m_setting.Device == null)
+                return null;
+
+            var maps = m_setting.Device.PathMap;
+            foreach (var m in maps)
+            {
+                if (m.Name == name)
+                {
+                    return m;
+                }
+            }
+
+            return null;
         }
     }
 }

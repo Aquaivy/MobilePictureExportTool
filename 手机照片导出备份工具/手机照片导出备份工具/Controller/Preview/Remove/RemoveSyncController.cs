@@ -8,7 +8,7 @@ using 手机照片导出备份工具.Model;
 
 namespace 手机照片导出备份工具.Controller
 {
-    abstract class RemoveSyncController : ISyncRemove
+    abstract class RemoveSyncController : IRemoveSync
     {
         protected Settings settings;
 

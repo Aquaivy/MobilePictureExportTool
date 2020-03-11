@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace 手机照片导出备份工具.Controller
 {
-    public interface ISyncOperation
+    public interface IRenameSync : IOperationSync
     {
     }
 }

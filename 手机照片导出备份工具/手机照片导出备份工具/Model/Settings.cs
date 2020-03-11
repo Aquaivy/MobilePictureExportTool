@@ -11,6 +11,7 @@ namespace 手机照片导出备份工具.Model
     public class Settings
     {
         public string AndroidSdkRootPath;
+        public string CloudPath;
         public string LocalBackupPath;
         public string RecycleBinPath;
         public string DeviceConfigPath;
@@ -18,8 +19,8 @@ namespace 手机照片导出备份工具.Model
         [NonSerialized]
         public DeviceConfig Device;
 
-        [NonSerialized]
-        public SyncRemoveConfig SyncRemove;
+        //[NonSerialized]
+        //public SyncRemoveConfig SyncRemove;
     }
 
     public class DeviceConfig
@@ -29,11 +30,11 @@ namespace 手机照片导出备份工具.Model
         public PathMap[] PathMap;
     }
 
-    public class SyncRemoveConfig
-    {
-        public PathMap[] SDCardPathMap;
-        public PathMap[] MobilePathMap;
-    }
+    //public class SyncRemoveConfig
+    //{
+    //    public PathMap[] SDCardPathMap;
+    //    public PathMap[] MobilePathMap;
+    //}
 
 
     public class PathMap

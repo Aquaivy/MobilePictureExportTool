@@ -28,28 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox = new System.Windows.Forms.ComboBox();
+            this.btnExport = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(56, 29);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(188, 20);
-            this.comboBox1.TabIndex = 0;
+            this.comboBox.FormattingEnabled = true;
+            this.comboBox.Location = new System.Drawing.Point(56, 29);
+            this.comboBox.Name = "comboBox";
+            this.comboBox.Size = new System.Drawing.Size(188, 20);
+            this.comboBox.TabIndex = 0;
             // 
-            // button1
+            // btnExport
             // 
-            this.button1.Location = new System.Drawing.Point(250, 29);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnExport.Location = new System.Drawing.Point(250, 29);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 23);
+            this.btnExport.TabIndex = 1;
+            this.btnExport.Text = "导出";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
             // progressBar1
             // 
@@ -58,14 +59,14 @@
             this.progressBar1.Size = new System.Drawing.Size(678, 23);
             this.progressBar1.TabIndex = 2;
             // 
-            // listBox1
+            // listBox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 12;
-            this.listBox1.Location = new System.Drawing.Point(56, 97);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(678, 340);
-            this.listBox1.TabIndex = 3;
+            this.listBox.FormattingEnabled = true;
+            this.listBox.ItemHeight = 12;
+            this.listBox.Location = new System.Drawing.Point(56, 97);
+            this.listBox.Name = "listBox";
+            this.listBox.Size = new System.Drawing.Size(678, 316);
+            this.listBox.TabIndex = 3;
             // 
             // FrmExport
             // 
@@ -73,10 +74,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBox);
             this.Controls.Add(this.progressBar1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.btnExport);
+            this.Controls.Add(this.comboBox);
             this.Name = "FrmExport";
             this.Text = "FrmExport";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -87,9 +88,9 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox comboBox;
+        private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBox;
     }
 }

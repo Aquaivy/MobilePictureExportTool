@@ -39,7 +39,8 @@ namespace 手机照片导出备份工具.View
             //SettingController.Instance.CreateDefaultSettings();
             SettingController.Instance.Load();
 
-            MenuPreview_Click(sender, e);
+            //MenuPreview_Click(sender, e);
+            MenuExport_Click(sender, e);
         }
 
         private Form Show<T>() where T : Form, new()

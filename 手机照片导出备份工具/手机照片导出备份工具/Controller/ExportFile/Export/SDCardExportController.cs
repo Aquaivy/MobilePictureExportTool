@@ -7,10 +7,11 @@ using 手机照片导出备份工具.Model;
 
 namespace 手机照片导出备份工具.Controller
 {
-    public interface ISyncRemove : ISyncOperation
+    public class SDCardExportController : BaseExportController
     {
-        void RemoveLocalFile(FileData file);
-
-        void RemoveRemoteFile(FileData file);
+        public SDCardExportController(Settings settings)
+            : base(settings)
+        {
+        }
     }
 }
