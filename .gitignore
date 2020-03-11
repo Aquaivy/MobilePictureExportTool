@@ -1,0 +1,37 @@
+# Unity generated
+Builds/
+[Tt]emp/
+[Ll]ibrary/
+Logs/Packages-Update.log
+Packages/manifest.json
+UWP/project**.json
+
+# Visual Studio / MonoDevelop generated
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+
+# OS generated
+.DS_Store
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+# x64/
+# x86/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+# Visual Studio 2015 cache/options directory
+.vs/
+
+# Python Tools for Visual Studio (PTVS)
+__pycache__/
+*.pyc
