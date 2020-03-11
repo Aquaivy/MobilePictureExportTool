@@ -30,7 +30,7 @@
         {
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.btnExport = new System.Windows.Forms.Button();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -52,12 +52,12 @@
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.BtnExport_Click);
             // 
-            // progressBar1
+            // progressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(56, 68);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(678, 23);
-            this.progressBar1.TabIndex = 2;
+            this.progressBar.Location = new System.Drawing.Point(56, 68);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(678, 23);
+            this.progressBar.TabIndex = 2;
             // 
             // listBox
             // 
@@ -75,7 +75,7 @@
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.listBox);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.comboBox);
             this.Name = "FrmExport";
@@ -90,7 +90,7 @@
 
         private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.Button btnExport;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ListBox listBox;
     }
 }

@@ -36,11 +36,18 @@ namespace 手机照片导出备份工具.View
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            //SettingController.Instance.CreateDefaultSettings();
-            SettingController.Instance.Load();
+            try
+            {
+                //SettingController.Instance.CreateDefaultSettings();
+                SettingController.Instance.Load();
 
-            //MenuPreview_Click(sender, e);
-            MenuExport_Click(sender, e);
+                //MenuPreview_Click(sender, e);
+                MenuExport_Click(sender, e);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private Form Show<T>() where T : Form, new()

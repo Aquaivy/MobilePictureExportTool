@@ -20,6 +20,9 @@ namespace Aquaivy.Core.Utilities
         /// <returns></returns>
         public static string[] GetFiles(string path)
         {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
             return Directory.GetFiles(path, "*.*", SearchOption.AllDirectories);
         }
 
@@ -32,6 +35,9 @@ namespace Aquaivy.Core.Utilities
         /// <returns></returns>
         public static string[] GetFiles(string path, string searchPattern, SearchOption searchOption)
         {
+            if (!Directory.Exists(path))
+                Directory.CreateDirectory(path);
+
             return Directory.GetFiles(path, searchPattern, searchOption);
         }
 

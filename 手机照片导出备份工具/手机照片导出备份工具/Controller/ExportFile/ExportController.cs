@@ -2,6 +2,7 @@
 using GoogleARCoreInternal;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,8 +16,11 @@ namespace 手机照片导出备份工具.Controller
 
         private BaseExportController expertController;
 
-        private string[] cloud_files;
-        private string[] device_files;
+        private List<FileData> cloud_files = new List<FileData>();
+        private List<FileData> device_files = new List<FileData>();
+        private List<FileData> need_backup_files = new List<FileData>();
+
+        public event EventHandler<ExportedOneFileEventArgs> ExportedOneFile;
 
         public ExportController(Settings settings)
         {
@@ -49,6 +53,10 @@ namespace 手机照片导出备份工具.Controller
             //3.对比，得出需要备份的文件
             //4.将需要备份的文件备份出来
 
+            cloud_files?.Clear();
+            device_files?.Clear();
+            need_backup_files?.Clear();
+
             GetCloudFiles();
             GetDeviceFiles(map);
             CompareDeviceAndCloud();
@@ -58,13 +66,19 @@ namespace 手机照片导出备份工具.Controller
         private void GetCloudFiles()
         {
             var cloud_path = SettingController.Setting.CloudPath;
-            cloud_files = FileUtility.GetFiles(cloud_path);
+            var cloud_files_path = FileUtility.GetFiles(cloud_path);
+            cloud_files = new List<FileData>(cloud_files_path.Length);
+            for (int i = 0; i < cloud_files_path.Length; i++)
+            {
+                var fd = new FileData(cloud_files_path[i]);
+                cloud_files.Add(fd);
+            }
         }
 
         private void GetDeviceFiles(PathMap map)
         {
-            var path = map.RemotePath.Replace(" ", @"\ ");
-            var cmd = "shell ls " + path;
+            //var path = map.RemotePath.Replace(" ", @"\ ");
+            var cmd = "shell ls " + map.RemotePath.Replace(" ", @"\ ");
 
             var adbPath = ShellHelper.GetAdbPath(SettingController.Setting.AndroidSdkRootPath);
             ShellHelper.RunCommand(adbPath, cmd, out string output, out string errors);
@@ -74,17 +88,65 @@ namespace 手机照片导出备份工具.Controller
                 throw new Exception($"手机 GetDeviceFiles导出出错\r\n\r\n{errors}");
             }
 
-            device_files = output.Split('\r');
+            var device_files_path = output.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+            for (int i = 0; i < device_files_path.Length; i++)
+            {
+                var fd = new FileData(map.RemotePath + "/" + device_files_path[i]);
+                device_files.Add(fd);
+            }
         }
 
         private void CompareDeviceAndCloud()
         {
-
+            for (int i = 0; i < device_files.Count; i++)
+            {
+                var df = device_files[i];
+                if (cloud_files.FirstOrDefault(o => o.Name == df.Name) == null)
+                {
+                    //新增的图片
+                    need_backup_files.Add(df);
+                }
+            }
         }
 
         private void ExportDeviceFileToPC()
         {
+            int idx = 0;
+            int total = need_backup_files.Count;
+            foreach (var file in need_backup_files)
+            {
+                var dist_dir = Path.Combine(SettingController.Setting.LocalBackupPath, file.ParentName);
+                if (!Directory.Exists(dist_dir))
+                    Directory.CreateDirectory(dist_dir);
 
+                var device_path = file.Path.Replace(" ", @"\ ");
+
+                var cmd = $"pull {device_path} {dist_dir}";
+
+                var adbPath = ShellHelper.GetAdbPath(SettingController.Setting.AndroidSdkRootPath);
+                ShellHelper.RunCommand(adbPath, cmd, out string output, out string errors);
+
+                if (!string.IsNullOrEmpty(errors))
+                {
+                    throw new Exception($"手机 GetDeviceFiles导出出错\r\n\r\n{errors}");
+                }
+                else
+                {
+                    ExportedOneFile?.Invoke(this, new ExportedOneFileEventArgs { FileData = file, DistPath = dist_dir, Index = idx, TotalCount = total });
+                }
+
+                idx++;
+                //adb pull sdcard/DCIM/Camera/IMG_20191008_194251.jpg E:\
+            }
         }
+    }
+
+    public class ExportedOneFileEventArgs : EventArgs
+    {
+        public FileData FileData { get; set; }
+        public string DistPath { get; set; }
+        public int Index { get; set; }
+        public int TotalCount { get; set; }
     }
 }

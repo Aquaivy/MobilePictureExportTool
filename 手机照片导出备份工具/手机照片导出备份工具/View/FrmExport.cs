@@ -27,8 +27,18 @@ namespace 手机照片导出备份工具.View
             var setting = SettingController.Setting;
 
             exportController = new ExportController(setting);
+            exportController.ExportedOneFile += ExportController_ExportedOneFile1;
 
             InitComboBoxData(setting);
+        }
+
+        private void ExportController_ExportedOneFile1(object sender, ExportedOneFileEventArgs e)
+        {
+            float percentage = (e.Index + 1) * 1.0f / e.TotalCount * 100;
+            string s = $"{e.Index + 1}     {e.FileData.Path}";
+
+            listBox.Items.Add(s);
+            progressBar.Value = (int)percentage;
         }
 
         private void InitComboBoxData(Settings setting)
@@ -61,6 +71,8 @@ namespace 手机照片导出备份工具.View
 
         private void BtnExport_Click(object sender, EventArgs e)
         {
+            listBox.Items.Clear();
+
             var map = SettingController.Instance.GetPathMapWithName(comboBox.Text);
 
             try
