@@ -1,1 +1,7 @@
-﻿{"AndroidSdkRootPath":"D:\\Softwares\\Android\\android-sdk\\","LocalBackupPath":"E:\\backup_path\\","RecycleBinPath":"E:\\backup_path\\_recycle_bin","DeviceConfigPath":"\\Configs\\SDCard.config"}
+﻿{
+    "AndroidSdkRootPath": "D:\\Softwares\\Android\\android-sdk\\",
+    "CloudPath": "E:\\Cloud\\Pictures\\",
+    "LocalBackupPath": "E:\\backup_path\\",
+    "RecycleBinPath": "E:\\backup_path\\_recycle_bin",
+    "DeviceConfigPath": "\\Configs\\Mobile.config"
+}

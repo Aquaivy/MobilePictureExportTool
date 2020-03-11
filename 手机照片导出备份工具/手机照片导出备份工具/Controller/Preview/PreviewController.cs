@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aquaivy.Core.Utilities;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -34,7 +35,7 @@ namespace 手机照片导出备份工具.Controller
         {
             Clear();
 
-            var files = Directory.GetFiles(path, "*.*", SearchOption.AllDirectories).ToList();
+            var files = FileUtility.GetFiles(path, "*.*", SearchOption.AllDirectories).ToList();
             for (int i = 0; i < files.Count; i++)
             {
                 bool isPic = false;
