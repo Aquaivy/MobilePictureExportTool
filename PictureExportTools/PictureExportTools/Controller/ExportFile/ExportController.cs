@@ -39,7 +39,7 @@ namespace PictureExportTools.Controller
             return null;
         }
 
-        public void Compare(PathMap map)
+        public void Export(PathMap map)
         {
             //1.遍历Cloud Path，获取所有已经备份文件
             //2.遍历Remote Path，获取所有设备中的文件

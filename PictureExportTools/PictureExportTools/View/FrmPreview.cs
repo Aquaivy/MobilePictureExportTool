@@ -18,7 +18,7 @@ namespace PictureExportTools.View
 {
     public partial class FrmPreview : Form
     {
-        private PreviewController previewController;
+        private PreviewController controller;
 
         public FrmPreview()
         {
@@ -29,7 +29,7 @@ namespace PictureExportTools.View
         {
             var setting = SettingController.Setting;
 
-            previewController = new PreviewController(setting);
+            controller = PreviewController.Create(setting);
 
             InitComboBoxData(setting);
         }
@@ -131,7 +131,7 @@ namespace PictureExportTools.View
                 var file = selectItem.Tag as FileData;
 
                 listView1.Items.Remove(selectItem);
-                previewController.RemoveFile(file);
+                controller.RemoveFile(file);
 
                 if (imageIndex >= listView1.Items.Count)
                 {
@@ -177,14 +177,14 @@ namespace PictureExportTools.View
         {
             try
             {
-                previewController.ReadFiles(comboBox.Text);
+                controller.ReadFiles(comboBox.Text);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            InitListViewData(previewController.Files);
+            InitListViewData(controller.Files);
 
             if (listView1.Items.Count > 0)
                 listView1.Items[0].Selected = true;

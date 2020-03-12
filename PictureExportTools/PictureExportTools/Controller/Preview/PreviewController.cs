@@ -9,24 +9,28 @@ using PictureExportTools.Model;
 
 namespace PictureExportTools.Controller
 {
-    public class PreviewController
+    public abstract class PreviewController
     {
+        protected Settings settings;
         private List<FileData> m_files = new List<FileData>();
-
-        private BaseRemoveSyncController removeController;
-
 
         public PreviewController(Settings settings)
         {
+            this.settings = settings;
+        }
+
+        public static PreviewController Create(Settings settings)
+        {
             if (settings.Device.Type == RemoteType.Mobile)
             {
-                removeController = new MobileRemoveSyncController(settings);
+                return new MobileRemoveSyncController(settings);
             }
             else if (settings.Device.Type == RemoteType.SDCard)
             {
-                removeController = new SDCardRemoveSyncController(settings);
+                return new SDCardRemoveSyncController(settings);
             }
 
+            return null;
         }
 
         public List<FileData> Files { get { return m_files; } }
@@ -74,11 +78,28 @@ namespace PictureExportTools.Controller
             int idx = m_files.IndexOf(file);
             if (idx >= 0)
             {
-                removeController.RemoveLocalFile(file);
-                removeController.RemoveRemoteFile(file);
+                RemoveLocalFile(file);
+                RemoveRemoteFile(file);
                 m_files.RemoveAt(idx);
             }
         }
+
+        public void RemoveLocalFile(FileData file)
+        {
+            var src = file.Path;
+            var dest = Path.Combine(settings.RecycleBinPath, file.ParentName, file.Name);
+            var dir = Path.Combine(settings.RecycleBinPath, file.ParentName);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
+
+            if (File.Exists(dest))
+                throw new IOException($"文件 {file.Name} 已存在，无法移动到 {dest}");
+
+            File.Move(src, dest);
+        }
+
+
+        public abstract void RemoveRemoteFile(FileData file);
 
         public void RenameFile(FileData file)
         {

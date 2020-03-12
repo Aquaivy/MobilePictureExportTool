@@ -15,7 +15,7 @@ namespace PictureExportTools.View
 {
     public partial class FrmExport : Form
     {
-        private ExportController exportController;
+        private ExportController controller;
 
         public FrmExport()
         {
@@ -26,13 +26,13 @@ namespace PictureExportTools.View
         {
             var setting = SettingController.Setting;
 
-            exportController = new ExportController(setting);
-            exportController.ExportedOneFile += ExportController_ExportedOneFile1;
+            controller = ExportController.Create(setting);
+            controller.ExportedOneFile += ExportController_ExportedOneFile;
 
             InitComboBoxData(setting);
         }
 
-        private void ExportController_ExportedOneFile1(object sender, ExportedOneFileEventArgs e)
+        private void ExportController_ExportedOneFile(object sender, ExportedOneFileEventArgs e)
         {
             float percentage = (e.Index + 1) * 1.0f / e.TotalCount * 100;
             string s = $"{e.Index + 1}     {e.FileData.Path}";
@@ -43,7 +43,6 @@ namespace PictureExportTools.View
 
         private void InitComboBoxData(Settings setting)
         {
-            //新方案
             comboBox.Items.Clear();
 
             var map = setting.Device.PathMap;
@@ -52,21 +51,6 @@ namespace PictureExportTools.View
                 //var path = Path.Combine(setting.LocalBackupPath, dir.Name);
                 comboBox.Items.Add(dir.Name);
             }
-
-
-            //原始方案
-            //comboBox.Items.Clear();
-
-            //var backup_path = setting.LocalBackupPath;
-            //var dirs = FileUtility.GetDirectories(backup_path, "*", SearchOption.TopDirectoryOnly);
-            //foreach (var dir in dirs)
-            //{
-            //    var path = Path.Combine(backup_path, dir);
-            //    if (!Path.Equals(path, setting.RecycleBinPath))
-            //    {
-            //        comboBox.Items.Add(path);
-            //    }
-            //}
         }
 
         private void BtnExport_Click(object sender, EventArgs e)
@@ -77,7 +61,7 @@ namespace PictureExportTools.View
 
             try
             {
-                exportController.Compare(map);
+                controller.Export(map);
             }
             catch (Exception ex)
             {

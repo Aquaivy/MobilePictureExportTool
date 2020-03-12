@@ -18,5 +18,10 @@ namespace PictureExportTools.Controller
         {
             throw new NotImplementedException();
         }
+
+        protected override void ExportDeviceFileToLocal()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

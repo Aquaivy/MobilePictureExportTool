@@ -9,7 +9,7 @@ using PictureExportTools.Model;
 
 namespace PictureExportTools.Controller
 {
-    class MobileRemoveSyncController : BaseRemoveSyncController
+    class MobileRemoveSyncController : PreviewController
     {
         public MobileRemoveSyncController(Settings settings)
             : base(settings)
@@ -19,7 +19,8 @@ namespace PictureExportTools.Controller
 
         public override void RemoveRemoteFile(FileData file)
         {
-            var remote_path = GetRemotePathWithParentName(file.ParentName) + "/" + file.Name;
+            var parent = SettingController.Instance.GetPathMapWithName(file.ParentName).RemotePath;
+            var remote_path = parent + "/" + file.Name;
 
             var adbPath = ShellHelper.GetAdbPath(SettingController.Setting.AndroidSdkRootPath);
             ShellHelper.RunCommand(adbPath,
