@@ -35,7 +35,7 @@ namespace PictureExportTools.View
         private void ExportController_ExportedOneFile(object sender, ExportedOneFileEventArgs e)
         {
             float percentage = (e.Index + 1) * 1.0f / e.TotalCount * 100;
-            string s = $"{e.Index + 1}     {e.FileData.Path}";
+            string s = $"{e.Index + 1,3}     {e.FileData.Path}";
 
             listBox.Items.Add(s);
             progressBar.Value = (int)percentage;

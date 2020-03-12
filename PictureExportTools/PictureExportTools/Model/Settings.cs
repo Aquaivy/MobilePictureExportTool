@@ -16,11 +16,10 @@ namespace PictureExportTools.Model
         public string RecycleBinPath;
         public string DeviceConfigPath;
 
+        public bool IncludeLocalBackupPathWhenSearchCloudFiles;
+
         [NonSerialized]
         public DeviceConfig Device;
-
-        //[NonSerialized]
-        //public SyncRemoveConfig SyncRemove;
     }
 
     public class DeviceConfig
@@ -29,12 +28,6 @@ namespace PictureExportTools.Model
 
         public PathMap[] PathMap;
     }
-
-    //public class SyncRemoveConfig
-    //{
-    //    public PathMap[] SDCardPathMap;
-    //    public PathMap[] MobilePathMap;
-    //}
 
 
     public class PathMap

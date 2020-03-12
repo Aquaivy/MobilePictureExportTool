@@ -40,7 +40,7 @@ namespace PictureExportTools.View
             {
                 //AppController.Instance.LoadReferenceAssembly();
 
-                //SettingController.Instance.CreateDefaultSettings();
+                SettingController.Instance.CreateDefaultSettings();
                 SettingController.Instance.Load();
 
                 //MenuPreview_Click(sender, e);

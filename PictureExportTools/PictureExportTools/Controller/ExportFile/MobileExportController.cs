@@ -31,8 +31,6 @@ namespace PictureExportTools.Controller
 
             var device_files_path = output.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-            List<FileData> device_files = new List<FileData>();
-
             for (int i = 0; i < device_files_path.Length; i++)
             {
                 var fd = new FileData(map.RemotePath + "/" + device_files_path[i]);

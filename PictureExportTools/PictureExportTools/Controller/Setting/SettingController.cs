@@ -42,28 +42,12 @@ namespace PictureExportTools.Controller
             Settings settings = new Settings
             {
                 AndroidSdkRootPath = @"D:\Softwares\Android\android-sdk\",
-                CloudPath= @"E:\cloud_path\",
+                CloudPath = @"E:\Cloud\Pictures\",
                 LocalBackupPath = @"E:\backup_path\",
                 RecycleBinPath = @"E:\backup_path\_recycle_bin",
                 DeviceConfigPath = @"\Configs\Mobile.config",
+                IncludeLocalBackupPathWhenSearchCloudFiles = true,
             };
-
-            // SyncRemoveConfig
-            //SyncRemoveConfig removeConfig = new SyncRemoveConfig();
-            //removeConfig.SDCardPathMap = new PathMap[] {
-            //    new PathMap { Name = @"Saved Pictures", RemotePath = @"E:\sdcard_path\Saved Pictures" },
-            //    new PathMap { Name = @"WeiXin", RemotePath = @"E:\sdcard_path\WeiXin" },
-            //    new PathMap { Name = @"Camera", RemotePath = @"E:\sdcard_path\Camera" },
-            //};
-            //removeConfig.MobilePathMap = new PathMap[] {
-            //    new PathMap { Name = @"Saved Pictures", RemotePath = @"sdcard/DCIM/Saved Pictures" },
-            //    new PathMap { Name = @"WeiXin", RemotePath = @"sdcard/WeiXin" },
-            //    new PathMap { Name = @"Camera", RemotePath = @"sdcard/DCIM/Camera" },
-            //};
-
-
-            // 赋值
-            //settings.SyncRemove = removeConfig;
 
             // save
             var json = JsonConvert.SerializeObject(settings);

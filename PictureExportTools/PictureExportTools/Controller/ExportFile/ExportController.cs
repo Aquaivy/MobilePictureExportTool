@@ -14,9 +14,9 @@ namespace PictureExportTools.Controller
     {
         protected Settings settings;
 
-        protected List<FileData> cloud_files = new List<FileData>();
-        protected List<FileData> device_files = new List<FileData>();
-        protected List<FileData> need_backup_files = new List<FileData>();
+        protected List<FileData> cloud_files = new List<FileData>(4096);
+        protected List<FileData> device_files = new List<FileData>(1024);
+        protected List<FileData> need_backup_files = new List<FileData>(256);
 
         public event EventHandler<ExportedOneFileEventArgs> ExportedOneFile;
 
@@ -58,13 +58,25 @@ namespace PictureExportTools.Controller
 
         private void GetCloudFiles()
         {
-            var cloud_path = SettingController.Setting.CloudPath;
+            // 获取远端文件
+            var cloud_path = settings.CloudPath;
             var cloud_files_path = FileUtility.GetFiles(cloud_path);
-            cloud_files = new List<FileData>(cloud_files_path.Length);
             for (int i = 0; i < cloud_files_path.Length; i++)
             {
                 var fd = new FileData(cloud_files_path[i]);
                 cloud_files.Add(fd);
+            }
+
+            // 获取本地LocalBackup文件
+            if (settings.IncludeLocalBackupPathWhenSearchCloudFiles)
+            {
+                var local_path = settings.LocalBackupPath;
+                var local_path_files = FileUtility.GetFiles(local_path);
+                for (int i = 0; i < local_path_files.Length; i++)
+                {
+                    var fd = new FileData(local_path_files[i]);
+                    cloud_files.Add(fd);
+                }
             }
         }
 
