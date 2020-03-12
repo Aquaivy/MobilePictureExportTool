@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{2E6DBD2F-8C9A-4936-9A2D-EBE4FEBDF542}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>手机照片导出备份工具</RootNamespace>
-    <AssemblyName>手机照片导出备份工具</AssemblyName>
+    <RootNamespace>PictureExportTools</RootNamespace>
+    <AssemblyName>PictureExportTools</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -110,6 +110,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\FrmPreview.resx">
       <DependentUpon>FrmPreview.cs</DependentUpon>

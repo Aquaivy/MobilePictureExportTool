@@ -38,6 +38,8 @@ namespace 手机照片导出备份工具.View
         {
             try
             {
+                //AppController.Instance.LoadReferenceAssembly();
+
                 //SettingController.Instance.CreateDefaultSettings();
                 SettingController.Instance.Load();
 
