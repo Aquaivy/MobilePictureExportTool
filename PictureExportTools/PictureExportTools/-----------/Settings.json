@@ -3,5 +3,6 @@
     "CloudPath": "E:\\Cloud\\Pictures\\",
     "LocalBackupPath": "E:\\backup_path\\",
     "RecycleBinPath": "E:\\backup_path\\_recycle_bin",
-    "DeviceConfigPath": "\\Configs\\Mobile.config"
+    "DeviceConfigPath": "\\Configs\\Mobile.config",
+    "IncludeLocalBackupPathWhenSearchCloudFiles": true
 }
