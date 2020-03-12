@@ -4,15 +4,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 手机照片导出备份工具.Model;
+using PictureExportTools.Model;
 
-namespace 手机照片导出备份工具.Controller
+namespace PictureExportTools.Controller
 {
-    abstract class RemoveSyncController : IRemoveSync
+    abstract class BaseRemoveSyncController : IRemoveSync
     {
         protected Settings settings;
 
-        public RemoveSyncController(Settings settings)
+        public BaseRemoveSyncController(Settings settings)
         {
             this.settings = settings;
         }

@@ -56,7 +56,6 @@
     <Compile Include="Controller\ExportFile\ExportController.cs" />
     <Compile Include="Controller\ExportFile\Export\SDCardExportController.cs" />
     <Compile Include="Controller\ExportFile\Export\MobileExportController.cs" />
-    <Compile Include="Controller\ExportFile\Export\BaseExportController.cs" />
     <Compile Include="Controller\IExport.cs" />
     <Compile Include="Controller\Setting\SettingController.cs" />
     <Compile Include="Controller\IOperationSync.cs" />
@@ -66,7 +65,7 @@
     <Compile Include="Controller\Preview\Remove\SDCardRemoveSyncController.cs" />
     <Compile Include="Controller\Utilities\ImageTools.cs" />
     <Compile Include="Model\RemoteType.cs" />
-    <Compile Include="Controller\Preview\Remove\RemoveSyncController.cs" />
+    <Compile Include="Controller\Preview\Remove\BaseRemoveSyncController.cs" />
     <Compile Include="Controller\IRenameSync.cs" />
     <Compile Include="Model\Settings.cs" />
     <Compile Include="ReferenceScripts\FileUtility.cs" />

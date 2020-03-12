@@ -10,11 +10,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using 手机照片导出备份工具.Controller;
-using 手机照片导出备份工具.Model;
+using PictureExportTools.Controller;
+using PictureExportTools.Model;
 
 
-namespace 手机照片导出备份工具.View
+namespace PictureExportTools.View
 {
     public partial class FrmPreview : Form
     {

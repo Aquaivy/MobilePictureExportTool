@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 手机照片导出备份工具.Controller
+namespace PictureExportTools.Controller
 {
     public static class ImageTools
     {

@@ -1,4 +1,4 @@
-﻿namespace 手机照片导出备份工具.View
+﻿namespace PictureExportTools.View
 {
     partial class FrmExport
     {

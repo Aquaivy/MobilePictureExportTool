@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 手机照片导出备份工具.Controller;
+using PictureExportTools.Controller;
 
-namespace 手机照片导出备份工具.Model
+namespace PictureExportTools.Model
 {
 
     public class Settings

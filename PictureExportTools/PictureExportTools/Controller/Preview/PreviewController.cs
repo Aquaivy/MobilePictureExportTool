@@ -5,15 +5,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 手机照片导出备份工具.Model;
+using PictureExportTools.Model;
 
-namespace 手机照片导出备份工具.Controller
+namespace PictureExportTools.Controller
 {
     public class PreviewController
     {
         private List<FileData> m_files = new List<FileData>();
 
-        private RemoveSyncController removeController;
+        private BaseRemoveSyncController removeController;
 
 
         public PreviewController(Settings settings)

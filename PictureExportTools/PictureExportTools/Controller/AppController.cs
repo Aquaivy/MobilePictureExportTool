@@ -5,9 +5,9 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using 手机照片导出备份工具.Model;
+using PictureExportTools.Model;
 
-namespace 手机照片导出备份工具.Controller
+namespace PictureExportTools.Controller
 {
     public class AppController : Singleton<AppController>
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using 手机照片导出备份工具.View;
+using PictureExportTools.View;
 
-namespace 手机照片导出备份工具
+namespace PictureExportTools
 {
     static class Program
     {

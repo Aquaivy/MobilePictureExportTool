@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 手机照片导出备份工具.Model;
+using PictureExportTools.Model;
 
-namespace 手机照片导出备份工具.Controller
+namespace PictureExportTools.Controller
 {
     public interface IExport : IOperationSync
     {
-        void Export(FileData file);
+        //void Export(FileData file);
     }
 }

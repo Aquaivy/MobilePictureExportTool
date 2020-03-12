@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 手机照片导出备份工具.Model;
+using PictureExportTools.Model;
 
-namespace 手机照片导出备份工具.Controller
+namespace PictureExportTools.Controller
 {
-    public class SDCardExportController : BaseExportController
+    public class SDCardExportController : ExportController
     {
         public SDCardExportController(Settings settings)
             : base(settings)
         {
+        }
+
+        public override void GetDeviceFiles(PathMap map)
+        {
+            throw new NotImplementedException();
         }
     }
 }

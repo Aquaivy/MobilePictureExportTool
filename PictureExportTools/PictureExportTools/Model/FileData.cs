@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace 手机照片导出备份工具.Model
+namespace PictureExportTools.Model
 {
     public class FileData
     {

@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using 手机照片导出备份工具.Model;
+using PictureExportTools.Model;
 
-namespace 手机照片导出备份工具.Controller
+namespace PictureExportTools.Controller
 {
-    class MobileRemoveSyncController : RemoveSyncController
+    class MobileRemoveSyncController : BaseRemoveSyncController
     {
         public MobileRemoveSyncController(Settings settings)
             : base(settings)
@@ -31,18 +31,5 @@ namespace 手机照片导出备份工具.Controller
                 throw new Exception($"手机文件 {remote_path} 删除出错\r\n\r\n{errors}");
             }
         }
-
-        //private string GetRemotePathWithParentName(string parent)
-        //{
-        //    foreach (var map in settings.Device.PathMap)
-        //    {
-        //        if (map.Name == parent)
-        //        {
-        //            return map.RemotePath;
-        //        }
-        //    }
-
-        //    return string.Empty;
-        //}
     }
 }
