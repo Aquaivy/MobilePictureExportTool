@@ -1,15 +1,4 @@
-# Unity generated
-Builds/
-[Tt]emp/
-[Ll]ibrary/
-Logs/Packages-Update.log
-Packages/manifest.json
-UWP/project**.json
-
 # Visual Studio / MonoDevelop generated
-*.csproj
-*.unityproj
-*.sln
 *.suo
 *.user
 *.userprefs
@@ -27,7 +16,6 @@ UWP/project**.json
 bld/
 [Bb]in/
 [Oo]bj/
-[Ll]og/
 
 # Visual Studio 2015 cache/options directory
 .vs/
