@@ -40,6 +40,15 @@ namespace PictureExportTools.Controller
 
         protected override void ExportDeviceFileToLocal()
         {
+            //方案一：异步
+            Task task = ExportDeviceFileToLocalAsync();
+
+            //方案二：同步
+            //ExportDeviceFileToLocalSync();
+        }
+
+        private void ExportDeviceFileToLocalSync()
+        {
             int idx = 0;
             int total = need_backup_files.Count;
             foreach (var file in need_backup_files)
@@ -58,6 +67,43 @@ namespace PictureExportTools.Controller
                 if (!string.IsNullOrEmpty(errors))
                 {
                     throw new Exception($"手机 GetDeviceFiles导出出错\r\n\r\n{errors}");
+                }
+                else
+                {
+                    RaiseExportedOneFileEvent(new ExportedOneFileEventArgs { FileData = file, DistPath = dist_dir, Index = idx, TotalCount = total });
+                }
+
+                idx++;
+            }
+        }
+
+        private async Task ExportDeviceFileToLocalAsync()
+        {
+            int idx = 0;
+            int total = need_backup_files.Count;
+            foreach (var file in need_backup_files)
+            {
+                var dist_dir = Path.Combine(SettingController.Setting.LocalBackupPath, file.ParentName);
+                if (!Directory.Exists(dist_dir))
+                    Directory.CreateDirectory(dist_dir);
+
+                var device_path = file.Path.Replace(" ", @"\ ");
+
+                var cmd = $"pull {device_path} {dist_dir}";
+
+                var adbPath = ShellHelper.GetAdbPath(SettingController.Setting.AndroidSdkRootPath);
+
+                string output = null;
+                string errors = null;
+
+                await Task.Run(() =>
+                {
+                    ShellHelper.RunCommand(adbPath, cmd, out output, out errors);
+                });
+
+                if (!string.IsNullOrEmpty(errors))
+                {
+                    throw new Exception($"导出手机文件出错\r\n\r\n{errors}");
                 }
                 else
                 {

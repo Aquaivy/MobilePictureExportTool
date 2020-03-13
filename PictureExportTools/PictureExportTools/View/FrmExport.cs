@@ -28,8 +28,14 @@ namespace PictureExportTools.View
 
             controller = ExportController.Create(setting);
             controller.ExportedOneFile += ExportController_ExportedOneFile;
+            controller.WillExportFile += Controller_WillExportFile;
 
             InitComboBoxData(setting);
+        }
+
+        private void Controller_WillExportFile(object sender, int count)
+        {
+            lblMessage.Text = $"共{count}个文件需要导出";
         }
 
         private void ExportController_ExportedOneFile(object sender, ExportedOneFileEventArgs e)

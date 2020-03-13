@@ -64,6 +64,9 @@ namespace PictureExportTools.View
 
         private void InitListViewData(List<FileData> files)
         {
+            //一次加载10张，异步加载
+            //已经看过的照片释放掉
+
             ClearForm();
 
             for (int i = 0; i < files.Count; i++)
@@ -103,13 +106,19 @@ namespace PictureExportTools.View
             if (e.IsSelected)
             {
                 var file = e.Item.Tag as FileData;
-                pictureBox.Image = ImageTools.LoadPictureToImage(file.Path);
+                FileSelected(file);
             }
             else
             {
                 //var file = e.Item.Tag as FileData;
                 //this.Text = file.Name;
             }
+        }
+
+        private void FileSelected(FileData file)
+        {
+            pictureBox.Image = ImageTools.LoadPictureToImage(file.Path);
+            lblName.Text = file.Name;
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)

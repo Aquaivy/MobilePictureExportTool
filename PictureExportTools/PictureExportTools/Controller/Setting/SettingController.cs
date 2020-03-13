@@ -36,8 +36,13 @@ namespace PictureExportTools.Controller
         }
 
 
-        public void CreateDefaultSettings()
+        public void CreateDefaultSettingsIfNotExists()
         {
+            if (File.Exists(setting_full_path))
+            {
+                return;
+            }
+
             // Settings
             Settings settings = new Settings
             {

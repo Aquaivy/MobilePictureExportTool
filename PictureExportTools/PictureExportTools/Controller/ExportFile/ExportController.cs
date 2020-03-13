@@ -19,6 +19,7 @@ namespace PictureExportTools.Controller
         protected List<FileData> need_backup_files = new List<FileData>(256);
 
         public event EventHandler<ExportedOneFileEventArgs> ExportedOneFile;
+        public event EventHandler<int> WillExportFile;
 
         public ExportController(Settings settings)
         {
@@ -94,6 +95,8 @@ namespace PictureExportTools.Controller
                     need_backup_files.Add(df);
                 }
             }
+
+            WillExportFile?.Invoke(this, need_backup_files.Count);
         }
 
         protected abstract void ExportDeviceFileToLocal();

@@ -35,6 +35,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.comboBox = new System.Windows.Forms.ComboBox();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.lblName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,12 +101,22 @@
             this.btnOpen.UseVisualStyleBackColor = true;
             this.btnOpen.Click += new System.EventHandler(this.BtnOpen_Click);
             // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(157, 48);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(41, 12);
+            this.lblName.TabIndex = 5;
+            this.lblName.Text = "label1";
+            // 
             // FrmPreview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblName);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.comboBox);
             this.Controls.Add(this.btnDelete);
@@ -119,6 +130,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmPreview_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -129,5 +141,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ComboBox comboBox;
         private System.Windows.Forms.Button btnOpen;
+        private System.Windows.Forms.Label lblName;
     }
 }

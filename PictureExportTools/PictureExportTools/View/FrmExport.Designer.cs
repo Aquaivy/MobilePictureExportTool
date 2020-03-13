@@ -32,6 +32,7 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.listBox = new System.Windows.Forms.ListBox();
+            this.lblMessage = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBox
@@ -73,12 +74,22 @@
             this.listBox.Size = new System.Drawing.Size(678, 316);
             this.listBox.TabIndex = 3;
             // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.Location = new System.Drawing.Point(349, 34);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(107, 12);
+            this.lblMessage.TabIndex = 4;
+            this.lblMessage.Text = "共0个文件需要导出";
+            // 
             // FrmExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.btnExport);
@@ -88,6 +99,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmExportPicture_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -97,5 +109,6 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.ListBox listBox;
+        private System.Windows.Forms.Label lblMessage;
     }
 }

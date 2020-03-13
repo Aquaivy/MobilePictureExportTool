@@ -40,11 +40,11 @@ namespace PictureExportTools.View
             {
                 //AppController.Instance.LoadReferenceAssembly();
 
-                SettingController.Instance.CreateDefaultSettings();
+                SettingController.Instance.CreateDefaultSettingsIfNotExists();
                 SettingController.Instance.Load();
 
-                //MenuPreview_Click(sender, e);
-                MenuExport_Click(sender, e);
+                MenuPreview_Click(sender, e);
+                //MenuExport_Click(sender, e);
             }
             catch (Exception ex)
             {
@@ -65,7 +65,6 @@ namespace PictureExportTools.View
 
             m_forms.ForEach(o => o.Visible = false);
             form.Show();
-            form.WindowState = FormWindowState.Minimized;
             form.WindowState = FormWindowState.Maximized;
 
             return form;
